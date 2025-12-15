@@ -6,8 +6,7 @@ def run_command_in_zsh(command):
     try:
         result = subprocess.run(["zsh", "-c", command], capture_output=True, text=True)
         if result.returncode != 0:
-            print("Error occurred:", result.stderr)
-            return False
+            
         return result.stdout.strip()
     except subprocess.CalledProcessError as exc:
         print("Status: FAIL", exc.returncode, exc.output)
@@ -104,3 +103,4 @@ if __name__ == "__main__":
                 run_nice_passive(domain)
     else:
         run_nice_passive(get_hostname(input_value))
+
